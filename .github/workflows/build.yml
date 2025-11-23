@@ -20,6 +20,8 @@ jobs:
           - 5432:5432
     steps:
       - uses: actions/checkout@v5
+        with:
+          submodules: true
       - run: echo /home/linuxbrew/.linuxbrew/bin >> $GITHUB_PATH
       - run: brew install scryer-prolog
       - run: scryer-prolog example.pl -g "main,halt."
