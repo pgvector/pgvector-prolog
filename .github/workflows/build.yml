@@ -1,0 +1,25 @@
+name: build
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    services:
+      postgres:
+        image: pgvector/pgvector:pg18
+        env:
+          POSTGRES_HOST_AUTH_METHOD: password
+          POSTGRES_PASSWORD: secret
+          POSTGRES_DB: pgvector_prolog_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v5
+      - run: echo /home/linuxbrew/.linuxbrew/bin >> $GITHUB_PATH
+      - run: brew install scryer-prolog
+      - run: scryer-prolog example.pl -g "main,halt."

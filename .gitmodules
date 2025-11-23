@@ -1,0 +1,3 @@
+[submodule "postgresql-prolog"]
+	path = postgresql-prolog
+	url = https://github.com/aarroyoc/postgresql-prolog
