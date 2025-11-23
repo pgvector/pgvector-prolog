@@ -42,8 +42,6 @@ Add an approximate index
 
 ```prolog
 postgresql:query(Connection, "CREATE INDEX ON items USING hnsw (embedding vector_l2_ops)", ok)
-% or
-postgresql:query(Connection, "CREATE INDEX ON items USING ivfflat (embedding vector_l2_ops) WITH (lists = 100)", ok)
 ```
 
 Use `vector_ip_ops` for inner product and `vector_cosine_ops` for cosine distance
