@@ -19,7 +19,7 @@ jobs:
         ports:
           - 5432:5432
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - run: echo /home/linuxbrew/.linuxbrew/bin >> $GITHUB_PATH
